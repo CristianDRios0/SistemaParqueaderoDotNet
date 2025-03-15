@@ -1,10 +1,13 @@
-﻿namespace SistemaParqueadero.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SistemaParqueadero.Models
 {
     public enum EstadoParqueo
     {
         Activo,
         Finalizado
     }
+    [Table("parqueo")]
     public class Parqueo
     {
         public int Id { get; set; }
@@ -17,8 +20,8 @@
         public EstadoParqueo Estado { get; set; }
 
         //relaciones con las Foreign Keys
-        public Vehiculo Vehiculo { get; set; }
-        public Celda Celda { get; set; }
-        public Tarifa Tarifa { get; set; }
+        public required Vehiculo Vehiculo { get; set; }
+        public required Celda Celda { get; set; }
+        public required Tarifa Tarifa { get; set; }
     }
 }

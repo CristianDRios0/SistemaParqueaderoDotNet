@@ -1,4 +1,6 @@
-﻿namespace SistemaParqueadero.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SistemaParqueadero.Models
 {
     public enum TipoTarifa
     {
@@ -11,6 +13,7 @@
         Moto,
         Automovil
     }
+    [Table("tarifa")]
     public class Tarifa
     {
         public int Id { get; set; }

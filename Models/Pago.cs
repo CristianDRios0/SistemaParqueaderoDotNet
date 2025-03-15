@@ -1,5 +1,8 @@
-﻿namespace SistemaParqueadero.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SistemaParqueadero.Models
 {
+    [Table("pago")]
     public class Pago
     {
         public int Id { get; set; }

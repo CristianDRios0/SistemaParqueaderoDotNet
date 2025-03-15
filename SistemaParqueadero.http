@@ -1,0 +1,6 @@
+@SistemaParqueadero_HostAddress = http://localhost:5217
+
+GET {{SistemaParqueadero_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

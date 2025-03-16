@@ -19,6 +19,11 @@ namespace SistemaParqueadero.Repositories.Implementations
             return await _context.Vehiculos.ToListAsync();
         }
 
+        public async Task<Vehiculo?> GetVehiculoById(int id) 
+        {
+            return await _context.Vehiculos.FindAsync(id);
+        }
+
         public async Task<Vehiculo?> GetVehiculoByPlaca(string placa)
         {
             return await _context.Vehiculos.FirstOrDefaultAsync(v => v.Placa == placa);
@@ -38,7 +43,7 @@ namespace SistemaParqueadero.Repositories.Implementations
 
         public async Task DeleteVehiculo(int id)
         {
-            var vehiculo = await _context.Vehiculos.FindAsync(id);
+            var vehiculo = await GetVehiculoById(id);
             if (vehiculo != null) 
             {
                 _context.Vehiculos.Remove(vehiculo);

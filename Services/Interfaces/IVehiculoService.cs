@@ -1,8 +1,8 @@
 ﻿using SistemaParqueadero.Models;
 
-namespace SistemaParqueadero.Repositories.Interfaces
+namespace SistemaParqueadero.Services.Interfaces
 {
-    public interface IVehiculoRepository
+    public interface IVehiculoService
     {
         Task<IEnumerable<Vehiculo>> GetAllVehiculos();
         Task<Vehiculo?> GetVehiculoById(int id);

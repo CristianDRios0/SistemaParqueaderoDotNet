@@ -2,6 +2,7 @@
 using SistemaParqueadero.Data;
 using SistemaParqueadero.Models;
 using SistemaParqueadero.Repositories.Interfaces;
+using System;
 
 namespace SistemaParqueadero.Repositories.Implementations
 {
@@ -30,7 +31,7 @@ namespace SistemaParqueadero.Repositories.Implementations
 
         public async Task<IEnumerable<Celda>> GetCeldaByEstado(string estado) 
         {
-            var estadoEnum = Enum.Parse<EstadoCelda>(estado);
+            var estadoEnum = Enum.Parse<EstadoCelda>(char.ToUpper(estado[0]) + estado.Substring(1).ToLower());
             return await _context.Celdas.Where(c => c.Estado == estadoEnum).ToListAsync();
         }
 

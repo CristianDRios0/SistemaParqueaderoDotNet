@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace SistemaParqueadero.Models
 {
@@ -19,7 +20,11 @@ namespace SistemaParqueadero.Models
     {
         public int Id { get; set; }
         public required string Codigo { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))] 
+        [Column(TypeName = "nvarchar(10)")]
         public TipoCelda Tipo { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [Column(TypeName = "nvarchar(10)")]
         public EstadoCelda Estado { get; set; }
     }
 }

@@ -17,6 +17,8 @@ builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IVehiculoRepository, VehiculoRepository>();
 builder.Services.AddScoped<IVehiculoService, VehiculoService>();
+builder.Services.AddScoped<ICeldaRepository, CeldaRepository>();
+builder.Services.AddScoped<ICeldaService, CeldaService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));

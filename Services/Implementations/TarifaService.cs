@@ -44,7 +44,7 @@ namespace SistemaParqueadero.Services.Implementations
                 throw new ArgumentException("El tipo de tarifa contiene caracteres no validos");
             }
 
-            var tipoEnum = new HashSet<string> { "hora", "menssual" };
+            var tipoEnum = new HashSet<string> { "hora", "mensual" };
             if (!tipoEnum.Contains(tipo.ToLower())) 
             {
                 throw new ArgumentException("El tipo buscado no es correcto, debe ser hora o mensual");

@@ -53,22 +53,6 @@
   },
   {
     "ContainingType": "SistemaParqueadero.Controllers.CeldaController",
-    "Method": "DeleteCelda",
-    "RelativePath": "api/Celda",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SistemaParqueadero.Controllers.CeldaController",
     "Method": "GetCeldaById",
     "RelativePath": "api/Celda/{id}",
     "HttpMethod": "GET",
@@ -92,6 +76,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.CeldaController",
+    "Method": "DeleteCelda",
+    "RelativePath": "api/Celda/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "SistemaParqueadero.Controllers.CeldaController",
@@ -381,6 +381,152 @@
     "ReturnTypes": [
       {
         "Type": "SistemaParqueadero.Models.Vehiculo",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.TarifaController",
+    "Method": "GetAllTarifas",
+    "RelativePath": "Tarifa",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SistemaParqueadero.Models.Tarifa, SistemaParqueadero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.TarifaController",
+    "Method": "AddTarifa",
+    "RelativePath": "Tarifa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tarifa",
+        "Type": "SistemaParqueadero.Models.Tarifa",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.TarifaController",
+    "Method": "UpdateTarifa",
+    "RelativePath": "Tarifa",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tarifa",
+        "Type": "SistemaParqueadero.Models.Tarifa",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.TarifaController",
+    "Method": "GetTarifaById",
+    "RelativePath": "Tarifa/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaParqueadero.Models.Tarifa",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.TarifaController",
+    "Method": "DeleteTarifa",
+    "RelativePath": "Tarifa/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.TarifaController",
+    "Method": "GetTarifaByTipo",
+    "RelativePath": "Tarifa/tipo/{tipo}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tipo",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SistemaParqueadero.Models.Tarifa, SistemaParqueadero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.TarifaController",
+    "Method": "GetTarifaByVehiculoTipo",
+    "RelativePath": "Tarifa/vehiculoTipo/{vehiculoTipo}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vehiculoTipo",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SistemaParqueadero.Models.Tarifa, SistemaParqueadero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

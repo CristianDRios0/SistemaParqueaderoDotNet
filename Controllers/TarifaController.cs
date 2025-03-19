@@ -4,40 +4,23 @@ using SistemaParqueadero.Services.Interfaces;
 
 namespace SistemaParqueadero.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class CeldaController : ControllerBase
+    [Route("[controller]")]
+    public class TarifaController : ControllerBase
     {
-        private readonly ICeldaService _celdaService;
+        private readonly ITarifaService _tarifaService;
 
-        public CeldaController(ICeldaService celdaService) 
+        public TarifaController(ITarifaService tarifaService) 
         {
-            _celdaService = celdaService;
+            _tarifaService = tarifaService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Celda>>> GetAllCeldas() 
-        {
-            try
-            {
-                return Ok(await _celdaService.GetAllCeldas()); 
-            }
-            catch (KeyNotFoundException ke) 
-            { 
-                return NotFound(ke.Message);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
-        }
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Celda>> GetCeldaById(int id) 
+        public async Task<ActionResult<IEnumerable<Tarifa>>> GetAllTarifas() 
         {
             try 
             {
-                var celda = await _celdaService.GetCeldaById(id);
-                return Ok(celda);
+                return Ok(await _tarifaService.GetAllTarifas());
             }
             catch (KeyNotFoundException ke)
             {
@@ -49,53 +32,64 @@ namespace SistemaParqueadero.Controllers
             }
         }
 
-        [HttpGet("codigo/{codigo}")]
-        public async Task<ActionResult<Celda>> GetCeldaByCodigo(string codigo) 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Tarifa>> GetTarifaById(int id) 
+        {
+            try 
+            { 
+                return Ok(await _tarifaService.GetTarifaById(id));
+            }
+            catch (KeyNotFoundException ke)
+            {
+                return NotFound(ke.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpGet("tipo/{tipo}")]
+        public async Task<ActionResult<IEnumerable<Tarifa>>> GetTarifaByTipo(string tipo) 
         {
             try
             {
-                var celda = await _celdaService.GetCeldaByCodigo(codigo);
-                return Ok(celda);
+                return Ok(await _tarifaService.GetTarifaByTipo(tipo));
             }
             catch (ArgumentException ae) 
             {
                 return BadRequest(ae.Message);
             }
-            catch (KeyNotFoundException ke)
-            {
-                return NotFound(ke.Message);
-            }
             catch (Exception e)
             {
                 return StatusCode(500, e.Message);
             }
         }
 
-        [HttpGet("estado/{estado}")]
-        public async Task<ActionResult<IEnumerable<Celda>>> GetCeldaByEstado(string estado) 
+        [HttpGet("vehiculoTipo/{vehiculoTipo}")]
+        public async Task<ActionResult<IEnumerable<Tarifa>>> GetTarifaByVehiculoTipo(string vehiculoTipo)
         {
             try
             {
-                var celdas = await _celdaService.GetCeldaByEstado(estado);
-                return Ok(celdas);
+                return Ok(await _tarifaService.GetTarifaByVehiculoTipo(vehiculoTipo));
             }
             catch (ArgumentException ae)
             {
                 return BadRequest(ae.Message);
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 return StatusCode(500, e.Message);
             }
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddCelda(Celda celda)
+        public async Task<ActionResult> AddTarifa(Tarifa tarifa) 
         {
-            try
+            try 
             {
-                await _celdaService.AddCelda(celda);
-                return Ok();
+                await _tarifaService.AddTarifa(tarifa);
+                return Ok("Tarifa registrada exitosamente");
             }
             catch (ArgumentException ae)
             {
@@ -108,20 +102,16 @@ namespace SistemaParqueadero.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateCelda(Celda celda)
+        public async Task<ActionResult> UpdateTarifa(Tarifa tarifa) 
         {
-            try
+            try 
             {
-                await _celdaService.UpdateCelda(celda);
-                return Ok();
+                await _tarifaService.UpdateTarifa(tarifa);
+                return Ok("Tarifa actualizada exitosamente");
             }
             catch (ArgumentException ae)
             {
                 return BadRequest(ae.Message);
-            }
-            catch (KeyNotFoundException ke)
-            {
-                return NotFound(ke.Message);
             }
             catch (Exception e)
             {
@@ -130,12 +120,12 @@ namespace SistemaParqueadero.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteCelda(int id)
+        public async Task<ActionResult> DeleteTarifa(int id)
         {
             try
             {
-                await _celdaService.DeleteCelda(id);
-                return Ok();
+                await _tarifaService.DeleteTarifa(id);
+                return Ok("Tarifa eliminada exitosamente");
             }
             catch (KeyNotFoundException ke)
             {

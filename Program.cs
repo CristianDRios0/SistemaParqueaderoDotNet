@@ -23,6 +23,8 @@ builder.Services.AddScoped<ITarifaRepository, TarifaRepository>();
 builder.Services.AddScoped<ITarifaService, TarifaService>();
 builder.Services.AddScoped<IParqueoRepository, ParqueoRepository>();
 builder.Services.AddScoped<IParqueoService, ParqueoService>();
+builder.Services.AddScoped<IPagoRepository, PagoRepository>();
+builder.Services.AddScoped<IPagoService, PagoService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));

@@ -85,8 +85,9 @@ namespace SistemaParqueadero.Services.Implementations
                 {   
                     throw new InvalidDataException("La celda ya se encuentra ocupada o reservada");
                 }
+                estadoCelda.Estado = EstadoCelda.Ocupado;
+                await _celdaRepository.UpdateCelda(estadoCelda);
             }
-
             await _parqueoRepository.AddParqueo(parqueo);
         }
 

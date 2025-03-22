@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace SistemaParqueadero.Models
 {
@@ -17,11 +18,13 @@ namespace SistemaParqueadero.Models
         public DateTime FechaEntrada { get; set; }
         public DateTime? FechaSalida { get; set; }
         public int? TotalPagado { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [Column(TypeName = "nvarchar(10)")]
         public EstadoParqueo Estado { get; set; }
 
         //relaciones con las Foreign Keys
-        public required Vehiculo Vehiculo { get; set; }
-        public required Celda Celda { get; set; }
-        public required Tarifa Tarifa { get; set; }
+        public Vehiculo? Vehiculo { get; set; }
+        public Celda? Celda { get; set; }
+        public Tarifa? Tarifa { get; set; }
     }
 }

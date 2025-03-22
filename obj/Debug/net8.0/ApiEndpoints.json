@@ -271,6 +271,126 @@
     ]
   },
   {
+    "ContainingType": "SistemaParqueadero.Controllers.ParqueoController",
+    "Method": "GetAllParqueos",
+    "RelativePath": "api/Parqueo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SistemaParqueadero.Models.Parqueo, SistemaParqueadero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.ParqueoController",
+    "Method": "AddParqueo",
+    "RelativePath": "api/Parqueo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "parqueo",
+        "Type": "SistemaParqueadero.Models.Parqueo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.ParqueoController",
+    "Method": "UpdateParqueo",
+    "RelativePath": "api/Parqueo",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "parqueo",
+        "Type": "SistemaParqueadero.Models.Parqueo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.ParqueoController",
+    "Method": "GetParqueoById",
+    "RelativePath": "api/Parqueo/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaParqueadero.Models.Parqueo",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.ParqueoController",
+    "Method": "DeleteParqueo",
+    "RelativePath": "api/Parqueo/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaParqueadero.Controllers.ParqueoController",
+    "Method": "GetParqueoByEstado",
+    "RelativePath": "api/Parqueo/estado/{estado}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "estado",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SistemaParqueadero.Models.Parqueo, SistemaParqueadero, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "SistemaParqueadero.Controllers.VehiculoController",
     "Method": "GetAllVehiculos",
     "RelativePath": "api/Vehiculo",

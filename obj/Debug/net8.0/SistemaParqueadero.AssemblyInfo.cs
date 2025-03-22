@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SistemaParqueadero")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27785efc196a9a6eb83d72c4786a7bf25ab99db4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d054abc9ce215fb86c7ccec567d9a76f59e74285")]
 [assembly: System.Reflection.AssemblyProductAttribute("SistemaParqueadero")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SistemaParqueadero")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

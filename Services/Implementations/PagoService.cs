@@ -8,14 +8,14 @@ namespace SistemaParqueadero.Services.Implementations
     {
         private readonly IPagoRepository _pagoRepository;
         private readonly IClienteRepository _clienteRepository;
-        private readonly IParqueoRepository _parqueoRepository;
+        private readonly IParqueoService _parqueoService;
         private readonly ITarifaRepository _tarifaRepository;
 
-        public PagoService(IPagoRepository pagoRepository, IClienteRepository clienteRepository, IParqueoRepository parqueoRepository, ITarifaRepository tarifaRepository) 
+        public PagoService(IPagoRepository pagoRepository, IClienteRepository clienteRepository, IParqueoService parqueoService, ITarifaRepository tarifaRepository) 
         {
             _pagoRepository = pagoRepository;
             _clienteRepository = clienteRepository;
-            _parqueoRepository = parqueoRepository;
+            _parqueoService = parqueoService;
             _tarifaRepository = tarifaRepository;
         }
 
@@ -57,7 +57,7 @@ namespace SistemaParqueadero.Services.Implementations
                 throw new ArgumentNullException("El parqueo es obligatorio para poder registrar el pago");
             }
 
-            var parqueo = await _parqueoRepository.GetParqueoById(pago.ParqueoId.Value);
+            var parqueo = await _parqueoService.GetParqueoById(pago.ParqueoId.Value);
             if (parqueo == null) 
             {
                 throw new KeyNotFoundException($"No se encontró un parqueo con el id {pago.ParqueoId}");
@@ -66,8 +66,9 @@ namespace SistemaParqueadero.Services.Implementations
             var tarifa = await _tarifaRepository.GetTarifaById(parqueo.TarifaId);
             if (tarifa != null)
             {
-                var fechaInicioparqueo = parqueo.FechaEntrada;
-                var fechaFinParqueo = DateTime.Now;
+                var zonaColombia = TimeZoneInfo.FindSystemTimeZoneById("SA Pacific Standard Time");
+                var fechaInicioparqueo = TimeZoneInfo.ConvertTime(parqueo.FechaEntrada, zonaColombia);
+                var fechaFinParqueo = TimeZoneInfo.ConvertTime(DateTime.Now,zonaColombia);
                 var tiempoParqueo = fechaFinParqueo - fechaInicioparqueo;
                 var totalMinutosParqueo = tiempoParqueo.TotalMinutes;
                 var valorMinutoParqueo = tarifa.Monto / 60;
@@ -89,7 +90,7 @@ namespace SistemaParqueadero.Services.Implementations
                     pago.Monto = tarifa.Monto;
                 }
 
-                await _parqueoRepository.UpdateParqueo(parqueo);
+                await _parqueoService.UpdateParqueo(parqueo);
             }
             else 
             {

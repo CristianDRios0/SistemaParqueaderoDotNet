@@ -78,6 +78,9 @@ namespace SistemaParqueadero.Services.Implementations
                 throw new ArgumentNullException("El id de la celda no puede ser 0");
             }
 
+            var zonaColombia = TimeZoneInfo.FindSystemTimeZoneById("SA Pacific Standard Time");
+            parqueo.FechaEntrada = TimeZoneInfo.ConvertTime(parqueo.FechaEntrada, zonaColombia);
+
             var estadoCelda = await _celdaRepository.GetCeldaById(parqueo.CeldaId);
             if (estadoCelda != null)
             {
@@ -115,10 +118,11 @@ namespace SistemaParqueadero.Services.Implementations
                 throw new ArgumentNullException("La celda que deseas asignar no existe");
             }
 
-            if (parqueo.Estado.ToString().ToLower() == "finalizado")
+            if (parqueo.Estado == EstadoParqueo.Finalizado)
             {
                 celdaExistente.Estado = EstadoCelda.Libre;
                 await _celdaRepository.UpdateCelda(celdaExistente);
+                Console.WriteLine($"Celda {celdaExistente.Id} marcada como LIBRE");
             }
 
             await _parqueoRepository.UpdateParqueo(parqueo);
